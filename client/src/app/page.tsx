@@ -27,8 +27,11 @@ export default function Home() {
             <Link href="#features" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
               Features
             </Link>
-            <Link href="#pricing" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
+            <Link href="/pricing" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
               Pricing
+            </Link>
+            <Link href="/enterprise" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
+              Enterprise
             </Link>
             <Link href="/blog" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
               Blog

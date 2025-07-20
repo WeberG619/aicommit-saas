@@ -17,9 +17,12 @@ import {
   Download,
   Sparkles,
   ChevronDown,
-  Home
+  Home,
+  Target,
+  Award
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { AnalyticsDashboard } from '@/components/analytics-dashboard';
 import toast from 'react-hot-toast';
 import { formatDate } from '@/lib/utils';
 
@@ -49,8 +52,12 @@ export default function DashboardPage() {
   const [gitDiff, setGitDiff] = useState('');
   const [commitStyle, setCommitStyle] = useState('conventional');
   const [customInstructions, setCustomInstructions] = useState('');
+  const [businessContext, setBusinessContext] = useState('');
+  const [ticketNumber, setTicketNumber] = useState('');
+  const [impactArea, setImpactArea] = useState('internal');
   const [generatedCommit, setGeneratedCommit] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [commitQuality, setCommitQuality] = useState<number | null>(null);
   const [commitHistory, setCommitHistory] = useState<CommitHistory[]>([]);
   const [usageStats, setUsageStats] = useState<UsageStats | null>(null);
 
@@ -95,10 +102,16 @@ export default function DashboardPage() {
       const response = await commitsAPI.generate({
         diff: gitDiff,
         style: commitStyle,
-        customInstructions
+        customInstructions,
+        businessContext,
+        ticketNumber,
+        impactArea
       });
       
       setGeneratedCommit(response.data.message);
+      // Simulate quality scoring based on context provided
+      const qualityScore = calculateCommitQuality(response.data.message, businessContext, ticketNumber);
+      setCommitQuality(qualityScore);
       toast.success('Commit message generated!');
       loadCommitHistory(); // Refresh history
       loadUsageStats(); // Refresh stats
@@ -112,6 +125,26 @@ export default function DashboardPage() {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success('Copied to clipboard!');
+  };
+
+  const calculateCommitQuality = (commit: string, context: string, ticket: string): number => {
+    let score = 60; // Base score
+    
+    // Check for conventional commit format
+    if (/^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?:/.test(commit)) score += 20;
+    
+    // Bonus for business context
+    if (context.length > 10) score += 15;
+    
+    // Bonus for ticket reference
+    if (ticket.length > 0) score += 5;
+    
+    // Check commit message length (50-72 chars is ideal for first line)
+    const firstLine = commit.split('\n')[0];
+    if (firstLine.length >= 20 && firstLine.length <= 72) score += 10;
+    else if (firstLine.length > 72) score -= 5;
+    
+    return Math.min(100, Math.max(0, score));
   };
 
   if (loading) {
@@ -150,20 +183,41 @@ export default function DashboardPage() {
                 <span className="font-medium capitalize dark:text-white">{user.subscription?.plan || 'Free'}</span>
               </div>
               <ThemeToggle />
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setActiveTab('settings')}
-              >
-                <Settings className="h-4 w-4" />
-              </Button>
+              <div className="flex space-x-2">
+                <Button
+                  variant={activeTab === 'generate' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setActiveTab('generate')}
+                >
+                  Generate
+                </Button>
+                <Button
+                  variant={activeTab === 'analytics' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setActiveTab('analytics')}
+                >
+                  <BarChart3 className="h-4 w-4 mr-1" />
+                  Analytics
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setActiveTab('settings')}
+                >
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Cards */}
+        {activeTab === 'analytics' ? (
+          <AnalyticsDashboard />
+        ) : (
+          <>
+        {/* Stats Cards */>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
@@ -250,17 +304,66 @@ export default function DashboardPage() {
                 />
               </div>
 
+              {/* Business Context - NEW */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Why are you making this change? <span className="text-blue-600 dark:text-blue-400 font-medium">(Pro Feature)</span>
+                </label>
+                <textarea
+                  value={businessContext}
+                  onChange={(e) => setBusinessContext(e.target.value)}
+                  rows={2}
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="e.g., Fix user login timeout to reduce churn, Improve page load speed for mobile users..."
+                />
+              </div>
+
+              {/* Ticket Integration */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Ticket/Issue (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={ticketNumber}
+                    onChange={(e) => setTicketNumber(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="JIRA-123, #456"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Impact Area
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={impactArea}
+                      onChange={(e) => setImpactArea(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    >
+                      <option value="user-facing">User-Facing</option>
+                      <option value="performance">Performance</option>
+                      <option value="security">Security</option>
+                      <option value="internal">Internal/Refactor</option>
+                      <option value="infrastructure">Infrastructure</option>
+                    </select>
+                    <ChevronDown className="absolute right-3 top-3 h-4 w-4 text-gray-400 dark:text-gray-500 pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+
               {/* Custom Instructions */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Custom Instructions (Optional)
+                  Additional Instructions (Optional)
                 </label>
                 <input
                   type="text"
                   value={customInstructions}
                   onChange={(e) => setCustomInstructions(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="e.g., Include ticket number, use imperative mood..."
+                  placeholder="e.g., Use imperative mood, include breaking change note..."
                 />
               </div>
 
@@ -288,7 +391,19 @@ export default function DashboardPage() {
               {generatedCommit && (
                 <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Generated Commit:</h3>
+                    <div className="flex items-center space-x-2">
+                      <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Generated Commit:</h3>
+                      {commitQuality && (
+                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                          commitQuality >= 90 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' :
+                          commitQuality >= 70 ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' :
+                          'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
+                        }`}>
+                          <Award className="h-3 w-3 inline mr-1" />
+                          Quality: {commitQuality}%
+                        </span>
+                      )}
+                    </div>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -390,6 +505,8 @@ export default function DashboardPage() {
             )}
           </div>
         </div>
+          </>
+        )}
       </div>
     </div>
   );
