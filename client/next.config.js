@@ -11,20 +11,7 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
   },
-  async redirects() {
-    return [
-      {
-        source: '/pricing',
-        destination: '/#pricing',
-        permanent: false,
-      },
-      {
-        source: '/features',
-        destination: '/#features',
-        permanent: false,
-      },
-    ];
-  },
+  // Removed problematic redirects that were causing 404 errors
   async headers() {
     return [
       {
