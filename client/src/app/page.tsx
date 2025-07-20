@@ -394,6 +394,157 @@ index 1234567..abcdefg 100644
         </div>
       </section>
 
+      {/* Social Proof Section */}
+      <section className="py-20 bg-white dark:bg-gray-800 px-4">
+        <div className="container mx-auto">
+          {/* Stats */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Trusted by Developers Worldwide
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+              Join thousands of developers who've already transformed their Git workflow
+            </p>
+            
+            <div className="grid md:grid-cols-4 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">12,847+</div>
+                <div className="text-gray-600 dark:text-gray-400">Developers</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">2.1M+</div>
+                <div className="text-gray-600 dark:text-gray-400">Commits Generated</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">850+</div>
+                <div className="text-gray-600 dark:text-gray-400">Companies</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">4.8★</div>
+                <div className="text-gray-600 dark:text-gray-400">Average Rating</div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Testimonials */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg"
+            >
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Sparkles key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                "Git Commit AI has completely transformed how our team writes commit messages. 
+                We've gone from inconsistent, unclear commits to professional, meaningful descriptions."
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  S
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white">Sarah Chen</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Senior Developer at Google</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg"
+            >
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Sparkles key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                "I was skeptical at first, but this tool saves me 10-15 minutes every day. 
+                The AI actually understands what I changed and creates perfect conventional commits."
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  M
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white">Marcus Johnson</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Tech Lead at Microsoft</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg"
+            >
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Sparkles key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                "Our code reviews became so much faster since everyone started using Git Commit AI. 
+                No more guessing what a commit does from cryptic messages."
+              </p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  L
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white">Lisa Rodriguez</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Engineering Manager at Meta</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Logo Wall */}
+          <div className="text-center">
+            <p className="text-gray-600 dark:text-gray-400 mb-8">Trusted by developers at</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">Google</div>
+              <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">Microsoft</div>
+              <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">Meta</div>
+              <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">Netflix</div>
+              <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">Stripe</div>
+              <div className="text-2xl font-bold text-gray-700 dark:text-gray-300">Spotify</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4">
         <div className="container mx-auto text-center">

@@ -14,6 +14,7 @@ import {
   CheckCircle2,
   ExternalLink
 } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function DocsPage() {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
@@ -32,14 +33,14 @@ export default function DocsPage() {
       content: (
         <div className="space-y-6">
           <div>
-            <h3 className="text-xl font-semibold mb-3">Quick Start</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-xl font-semibold mb-3 dark:text-white">Quick Start</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               Get up and running with Git Commit AI in under 2 minutes.
             </p>
             
             <div className="space-y-4">
               <div>
-                <h4 className="font-medium mb-2">1. Install the CLI</h4>
+                <h4 className="font-medium mb-2 dark:text-white">1. Install the CLI</h4>
                 <div className="bg-gray-900 rounded-lg p-4 relative">
                   <code className="text-green-400 text-sm">
                     npm install -g git-commit-ai
@@ -54,7 +55,7 @@ export default function DocsPage() {
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">2. Authenticate</h4>
+                <h4 className="font-medium mb-2 dark:text-white">2. Authenticate</h4>
                 <div className="bg-gray-900 rounded-lg p-4 relative">
                   <code className="text-green-400 text-sm">
                     gca auth login
@@ -69,7 +70,7 @@ export default function DocsPage() {
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">3. Generate your first commit</h4>
+                <h4 className="font-medium mb-2 dark:text-white">3. Generate your first commit</h4>
                 <div className="bg-gray-900 rounded-lg p-4 relative">
                   <pre className="text-green-400 text-sm">
 {`git add .
@@ -99,43 +100,43 @@ gca commit`}
             
             <div className="space-y-6">
               <div>
-                <h4 className="font-medium mb-2">Basic Commands</h4>
-                <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+                <h4 className="font-medium mb-2 dark:text-white">Basic Commands</h4>
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-3">
                   <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">gca commit</code>
-                    <p className="text-sm text-gray-600 mt-1">Generate and create a commit message</p>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">gca commit</code>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Generate and create a commit message</p>
                   </div>
                   <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">gca generate</code>
-                    <p className="text-sm text-gray-600 mt-1">Generate a commit message without committing</p>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">gca generate</code>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Generate a commit message without committing</p>
                   </div>
                   <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">gca status</code>
-                    <p className="text-sm text-gray-600 mt-1">Show current authentication status</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-medium mb-2">Options & Flags</h4>
-                <div className="bg-gray-50 rounded-lg p-4 space-y-3">
-                  <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">--style &lt;type&gt;</code>
-                    <p className="text-sm text-gray-600 mt-1">Set commit message style (conventional, angular, semantic)</p>
-                  </div>
-                  <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">--no-verify</code>
-                    <p className="text-sm text-gray-600 mt-1">Skip git hooks when committing</p>
-                  </div>
-                  <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">--dry-run</code>
-                    <p className="text-sm text-gray-600 mt-1">Show what would be committed without committing</p>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">gca status</code>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Show current authentication status</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">Examples</h4>
+                <h4 className="font-medium mb-2 dark:text-white">Options & Flags</h4>
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-3">
+                  <div>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">--style &lt;type&gt;</code>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Set commit message style (conventional, angular, semantic)</p>
+                  </div>
+                  <div>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">--no-verify</code>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Skip git hooks when committing</p>
+                  </div>
+                  <div>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">--dry-run</code>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Show what would be committed without committing</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-medium mb-2 dark:text-white">Examples</h4>
                 <div className="space-y-3">
                   <div className="bg-gray-900 rounded-lg p-4">
                     <div className="text-gray-400 text-sm mb-2"># Generate conventional commit</div>
@@ -163,7 +164,7 @@ gca commit`}
             
             <div className="space-y-4">
               <div>
-                <h4 className="font-medium mb-2">Installation</h4>
+                <h4 className="font-medium mb-2 dark:text-white">Installation</h4>
                 <ol className="list-decimal list-inside space-y-2 text-gray-600">
                   <li>Open VS Code</li>
                   <li>Go to Extensions (Ctrl+Shift+X)</li>
@@ -174,8 +175,8 @@ gca commit`}
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">Usage</h4>
-                <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+                <h4 className="font-medium mb-2 dark:text-white">Usage</h4>
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-3">
                   <div>
                     <strong>Source Control Panel:</strong>
                     <p className="text-sm text-gray-600">Click the "✨ Generate AI Commit" button in the Source Control panel</p>
@@ -192,7 +193,7 @@ gca commit`}
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">Settings</h4>
+                <h4 className="font-medium mb-2 dark:text-white">Settings</h4>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
 {`{
@@ -219,7 +220,7 @@ gca commit`}
             
             <div className="space-y-6">
               <div>
-                <h4 className="font-medium mb-2">Global Config</h4>
+                <h4 className="font-medium mb-2 dark:text-white">Global Config</h4>
                 <p className="text-gray-600 mb-3">Create a config file at <code className="bg-gray-200 px-2 py-1 rounded text-sm">~/.gca/config.json</code></p>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
@@ -238,7 +239,7 @@ gca commit`}
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">Project-Specific Config</h4>
+                <h4 className="font-medium mb-2 dark:text-white">Project-Specific Config</h4>
                 <p className="text-gray-600 mb-3">Create <code className="bg-gray-200 px-2 py-1 rounded text-sm">.gca.json</code> in your project root</p>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
@@ -252,18 +253,18 @@ gca commit`}
               </div>
 
               <div>
-                <h4 className="font-medium mb-2">Environment Variables</h4>
+                <h4 className="font-medium mb-2 dark:text-white">Environment Variables</h4>
                 <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                   <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">GCA_API_KEY</code>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_API_KEY</code>
                     <p className="text-sm text-gray-600">Your API key (auto-set after login)</p>
                   </div>
                   <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">GCA_STYLE</code>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_STYLE</code>
                     <p className="text-sm text-gray-600">Default commit style</p>
                   </div>
                   <div>
-                    <code className="bg-gray-200 px-2 py-1 rounded text-sm">GCA_MAX_LENGTH</code>
+                    <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_MAX_LENGTH</code>
                     <p className="text-sm text-gray-600">Maximum commit message length</p>
                   </div>
                 </div>
@@ -278,19 +279,20 @@ gca commit`}
   const [activeSection, setActiveSection] = useState('getting-started');
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold">Git Commit AI</span>
+              <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <span className="text-2xl font-bold dark:text-white">Git Commit AI</span>
             </Link>
             <div className="flex items-center space-x-4">
-              <Link href="/auth/login" className="text-gray-600 hover:text-gray-900">
+              <Link href="/auth/login" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 Sign In
               </Link>
+              <ThemeToggle />
               <Link href="/auth/register">
                 <Button>Get Started</Button>
               </Link>
@@ -303,8 +305,8 @@ gca commit`}
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm p-6 sticky top-6">
-              <h2 className="font-semibold text-gray-900 mb-4">Documentation</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 sticky top-6">
+              <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Documentation</h2>
               <nav className="space-y-2">
                 {sections.map((section) => (
                   <button
@@ -313,7 +315,7 @@ gca commit`}
                     className={`w-full text-left px-3 py-2 rounded-lg flex items-center space-x-2 transition-colors ${
                       activeSection === section.id
                         ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
                     }`}
                   >
                     <section.icon className="h-4 w-4" />
@@ -323,7 +325,7 @@ gca commit`}
               </nav>
 
               <div className="mt-8 pt-6 border-t">
-                <h3 className="font-medium text-gray-900 mb-3">Quick Links</h3>
+                <h3 className="font-medium text-gray-900 dark:text-white mb-3">Quick Links</h3>
                 <div className="space-y-2">
                   <Link 
                     href="/api-docs" 
@@ -353,15 +355,15 @@ gca commit`}
 
           {/* Main Content */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-lg shadow-sm p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8">
               {sections.find(s => s.id === activeSection)?.content}
             </div>
 
             {/* Additional Resources */}
             <div className="mt-8 grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h3 className="font-semibold text-blue-900 mb-2">Need Help?</h3>
-                <p className="text-blue-700 text-sm mb-4">
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
+                <h3 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">Need Help?</h3>
+                <p className="text-blue-700 dark:text-blue-300 text-sm mb-4">
                   Our support team is here to help you get the most out of Git Commit AI.
                 </p>
                 <Link href="/contact">
@@ -371,9 +373,9 @@ gca commit`}
                 </Link>
               </div>
 
-              <div className="bg-green-50 rounded-lg p-6">
-                <h3 className="font-semibold text-green-900 mb-2">Join the Community</h3>
-                <p className="text-green-700 text-sm mb-4">
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
+                <h3 className="font-semibold text-green-900 dark:text-green-300 mb-2">Join the Community</h3>
+                <p className="text-green-700 dark:text-green-300 text-sm mb-4">
                   Connect with other developers and share your experiences.
                 </p>
                 <Link href="https://discord.gg/gitcommitai">

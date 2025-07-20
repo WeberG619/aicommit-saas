@@ -1,22 +1,24 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Code2, Users, Target, Zap, GitBranch, Sparkles } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold">Git Commit AI</span>
+              <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <span className="text-2xl font-bold dark:text-white">Git Commit AI</span>
             </Link>
             <div className="flex items-center space-x-4">
-              <Link href="/auth/login" className="text-gray-600 hover:text-gray-900">
+              <Link href="/auth/login" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 Sign In
               </Link>
+              <ThemeToggle />
               <Link href="/auth/register">
                 <Button>Get Started</Button>
               </Link>
@@ -28,10 +30,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
             About Git Commit AI
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
             We're on a mission to revolutionize how developers write commit messages, 
             making version control more meaningful and productive for teams worldwide.
           </p>
@@ -39,15 +41,15 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center mb-6">
                 <Target className="h-8 w-8 text-blue-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Mission</h2>
               </div>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                 Every day, millions of developers struggle with writing meaningful commit messages. 
                 Poor commit messages lead to confusion, slower debugging, and reduced team productivity.
               </p>
@@ -56,13 +58,13 @@ export default function AboutPage() {
                 that clearly describe what changed and why, helping teams maintain better code history.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-8 rounded-2xl">
               <div className="text-center">
                 <GitBranch className="h-16 w-16 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   Better Git History
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-400">
                   Transform cryptic commit messages like "fix stuff" into clear, 
                   professional descriptions that future you will thank you for.
                 </p>
@@ -73,21 +75,21 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Values</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               The principles that guide everything we build and every decision we make.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
                 <Zap className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Efficiency First</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Efficiency First</h3>
+                <p className="text-gray-600 dark:text-gray-400">
                   We believe developers should focus on coding, not crafting commit messages. 
                   Our AI does the heavy lifting so you can stay in flow.
                 </p>
@@ -95,10 +97,10 @@ export default function AboutPage() {
             </div>
             
             <div className="text-center">
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
                 <Sparkles className="h-12 w-12 text-purple-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Quality & Clarity</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Quality & Clarity</h3>
+                <p className="text-gray-600 dark:text-gray-400">
                   Every generated message is clear, concise, and follows best practices. 
                   No more guessing what a commit does.
                 </p>
@@ -106,10 +108,10 @@ export default function AboutPage() {
             </div>
             
             <div className="text-center">
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
                 <Users className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Team Collaboration</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Team Collaboration</h3>
+                <p className="text-gray-600 dark:text-gray-400">
                   Better commit messages mean better team communication and 
                   easier code reviews for everyone.
                 </p>
@@ -120,13 +122,13 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Story</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Story</h2>
           </div>
           
-          <div className="prose prose-lg mx-auto text-gray-600">
+          <div className="prose prose-lg mx-auto text-gray-600 dark:text-gray-400 dark:prose-invert">
             <p>
               Git Commit AI was born from a simple frustration: spending too much time 
               thinking about commit messages instead of solving problems. As developers, 

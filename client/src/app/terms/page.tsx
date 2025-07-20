@@ -1,19 +1,21 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Code2 } from 'lucide-react';
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
               <Code2 className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold">Git Commit AI</span>
+              <span className="text-2xl font-bold dark:text-white">Git Commit AI</span>
             </Link>
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               <Link href="/auth/login" className="text-gray-600 hover:text-gray-900">
                 Sign In
               </Link>
@@ -26,9 +28,9 @@ export default function TermsPage() {
       </header>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Terms of Service</h1>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Terms of Service</h1>
         
-        <div className="prose prose-gray max-w-none">
+        <div className="prose prose-gray dark:prose-invert max-w-none">
           <p className="text-gray-600 mb-6">
             <strong>Effective Date: January 20, 2025</strong>
           </p>

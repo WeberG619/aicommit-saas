@@ -17,6 +17,7 @@ import {
   Sparkles,
   ChevronDown
 } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 import toast from 'react-hot-toast';
 import { formatDate } from '@/lib/utils';
 
@@ -113,8 +114,8 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400"></div>
       </div>
     );
   }
@@ -124,24 +125,25 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-4">
-              <Code2 className="h-8 w-8 text-blue-600" />
+              <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Git Commit AI</h1>
-                <p className="text-sm text-gray-600">Welcome back, {user.name}</p>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Git Commit AI</h1>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Welcome back, {user.name}</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="text-sm">
-                <span className="text-gray-500">Plan: </span>
-                <span className="font-medium capitalize">{user.subscription?.plan || 'Free'}</span>
+                <span className="text-gray-500 dark:text-gray-400">Plan: </span>
+                <span className="font-medium capitalize dark:text-white">{user.subscription?.plan || 'Free'}</span>
               </div>
+              <ThemeToggle />
               <Button
                 variant="ghost"
                 size="sm"
@@ -157,41 +159,41 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
-              <GitCommit className="h-8 w-8 text-blue-600" />
+              <GitCommit className="h-8 w-8 text-blue-600 dark:text-blue-400" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">This Month</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">This Month</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {usageStats?.current.commits_generated || 0}
                 </p>
-                <p className="text-xs text-gray-500">commits generated</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">commits generated</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
-              <Sparkles className="h-8 w-8 text-purple-600" />
+              <Sparkles className="h-8 w-8 text-purple-600 dark:text-purple-400" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Tokens Used</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Tokens Used</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {usageStats?.current.tokens_used || 0}
                 </p>
-                <p className="text-xs text-gray-500">AI processing</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">AI processing</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
-              <BarChart3 className="h-8 w-8 text-green-600" />
+              <BarChart3 className="h-8 w-8 text-green-600 dark:text-green-400" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Avg per Day</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Avg per Day</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {Math.round((usageStats?.current.commits_generated || 0) / new Date().getDate())}
                 </p>
-                <p className="text-xs text-gray-500">commits</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">commits</p>
               </div>
             </div>
           </div>
@@ -200,23 +202,23 @@ export default function DashboardPage() {
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Commit Generator */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-6 border-b">
-              <h2 className="text-lg font-semibold text-gray-900">Generate Commit Message</h2>
-              <p className="text-sm text-gray-600">Paste your git diff and get a professional commit message</p>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+            <div className="p-6 border-b dark:border-gray-700">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Generate Commit Message</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Paste your git diff and get a professional commit message</p>
             </div>
             
             <div className="p-6 space-y-4">
               {/* Style Selection */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Commit Style
                 </label>
                 <div className="relative">
                   <select
                     value={commitStyle}
                     onChange={(e) => setCommitStyle(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 appearance-none"
                   >
                     <option value="conventional">Conventional Commits</option>
                     <option value="descriptive">Descriptive</option>
@@ -224,34 +226,34 @@ export default function DashboardPage() {
                     <option value="semantic">Semantic</option>
                     <option value="ticket">Ticket Reference</option>
                   </select>
-                  <ChevronDown className="absolute right-3 top-3 h-4 w-4 text-gray-400 pointer-events-none" />
+                  <ChevronDown className="absolute right-3 top-3 h-4 w-4 text-gray-400 dark:text-gray-500 pointer-events-none" />
                 </div>
               </div>
 
               {/* Git Diff Input */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Git Diff
                 </label>
                 <textarea
                   value={gitDiff}
                   onChange={(e) => setGitDiff(e.target.value)}
                   rows={8}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
                   placeholder="Paste your git diff here..."
                 />
               </div>
 
               {/* Custom Instructions */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Custom Instructions (Optional)
                 </label>
                 <input
                   type="text"
                   value={customInstructions}
                   onChange={(e) => setCustomInstructions(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   placeholder="e.g., Include ticket number, use imperative mood..."
                 />
               </div>
@@ -278,9 +280,9 @@ export default function DashboardPage() {
 
               {/* Generated Result */}
               {generatedCommit && (
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-sm font-medium text-gray-700">Generated Commit:</h3>
+                    <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Generated Commit:</h3>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -289,7 +291,7 @@ export default function DashboardPage() {
                       <Copy className="h-4 w-4" />
                     </Button>
                   </div>
-                  <p className="font-mono text-sm bg-white p-3 rounded border">
+                  <p className="font-mono text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded border dark:border-gray-600">
                     {generatedCommit}
                   </p>
                 </div>
@@ -298,10 +300,10 @@ export default function DashboardPage() {
           </div>
 
           {/* Recent History */}
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-6 border-b">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+            <div className="p-6 border-b dark:border-gray-700">
               <div className="flex justify-between items-center">
-                <h2 className="text-lg font-semibold text-gray-900">Recent Commits</h2>
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Commits</h2>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -312,20 +314,20 @@ export default function DashboardPage() {
               </div>
             </div>
             
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {commitHistory.length > 0 ? (
                 commitHistory.map((commit) => (
-                  <div key={commit.id} className="p-4 hover:bg-gray-50">
+                  <div key={commit.id} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
                     <div className="flex justify-between items-start">
                       <div className="flex-1 min-w-0">
-                        <p className="font-mono text-sm text-gray-900 break-words">
+                        <p className="font-mono text-sm text-gray-900 dark:text-white break-words">
                           {commit.message}
                         </p>
                         <div className="flex items-center mt-2 space-x-4">
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300">
                             {commit.style}
                           </span>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-500 dark:text-gray-400">
                             {formatDate(commit.created_at)}
                           </span>
                         </div>
@@ -343,15 +345,15 @@ export default function DashboardPage() {
                 ))
               ) : (
                 <div className="p-8 text-center">
-                  <GitCommit className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">No commits generated yet</p>
-                  <p className="text-sm text-gray-400">Start by generating your first commit message!</p>
+                  <GitCommit className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                  <p className="text-gray-500 dark:text-gray-400">No commits generated yet</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-500">Start by generating your first commit message!</p>
                 </div>
               )}
             </div>
 
             {commitHistory.length > 0 && (
-              <div className="p-4 border-t">
+              <div className="p-4 border-t dark:border-gray-700">
                 <Button variant="outline" size="sm" className="w-full">
                   <Download className="h-4 w-4 mr-2" />
                   Export History

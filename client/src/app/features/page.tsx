@@ -18,6 +18,7 @@ import {
   Globe,
   Webhook
 } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function FeaturesPage() {
   const features = [
@@ -121,19 +122,20 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold">Git Commit AI</span>
+              <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <span className="text-2xl font-bold dark:text-white">Git Commit AI</span>
             </Link>
             <div className="flex items-center space-x-4">
-              <Link href="/auth/login" className="text-gray-600 hover:text-gray-900">
+              <Link href="/auth/login" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 Sign In
               </Link>
+              <ThemeToggle />
               <Link href="/auth/register">
                 <Button>Get Started</Button>
               </Link>
@@ -143,12 +145,12 @@ export default function FeaturesPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Powerful Features for Every Developer
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
             From AI-powered generation to enterprise security, Git Commit AI has everything 
             you need to transform your development workflow.
           </p>
@@ -171,31 +173,31 @@ export default function FeaturesPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Everything You Need to Write Better Commits
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Professional features designed to make commit messages effortless and meaningful.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-sm p-8 hover:shadow-md transition-shadow">
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 hover:shadow-md transition-shadow">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-blue-100 rounded-lg p-3">
-                    <feature.icon className="h-6 w-6 text-blue-600" />
+                  <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3">
+                    <feature.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {feature.description}
                     </p>
                     <ul className="space-y-2">
                       {feature.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-gray-600">
+                        <li key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                           <CheckCircle2 className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                           {benefit}
                         </li>
@@ -210,23 +212,23 @@ export default function FeaturesPage() {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Works With Your Favorite Tools
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-400">
               Seamlessly integrate with the tools you already use every day.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {integrations.map((integration, index) => (
-              <div key={index} className="text-center p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+              <div key={index} className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
                 <div className="text-4xl mb-3">{integration.logo}</div>
-                <h3 className="font-semibold text-gray-900 mb-2">{integration.name}</h3>
-                <p className="text-sm text-gray-600">{integration.description}</p>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{integration.name}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{integration.description}</p>
               </div>
             ))}
           </div>
@@ -234,44 +236,44 @@ export default function FeaturesPage() {
       </section>
 
       {/* Workflow Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               How It Works
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-400">
               Get professional commit messages in three simple steps.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <div className="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-blue-600">1</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Make Your Changes</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Make Your Changes</h3>
+              <p className="text-gray-600 dark:text-gray-400">
                 Code as usual. Stage your changes with git add like you normally would.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <div className="bg-purple-100 dark:bg-purple-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-purple-600">2</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Generate Message</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Generate Message</h3>
+              <p className="text-gray-600 dark:text-gray-400">
                 Run our CLI tool or use the VS Code extension to generate a commit message instantly.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <div className="bg-green-100 dark:bg-green-900/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-green-600">3</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Commit & Push</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Commit & Push</h3>
+              <p className="text-gray-600 dark:text-gray-400">
                 Review, edit if needed, and commit with confidence. Your git history will thank you.
               </p>
             </div>

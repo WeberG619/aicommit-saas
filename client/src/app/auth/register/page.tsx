@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useAuth } from '@/providers/auth-provider';
 import { Button } from '@/components/ui/button';
 import { Code2, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 import toast from 'react-hot-toast';
 
 function RegisterForm() {
@@ -67,31 +68,34 @@ function RegisterForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <Link href="/" className="flex items-center justify-center space-x-2 mb-8">
-            <Code2 className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold">Git Commit AI</span>
-          </Link>
-          <h2 className="text-3xl font-bold text-gray-900">
+          <div className="flex justify-between items-center mb-8">
+            <Link href="/" className="flex items-center space-x-2">
+              <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <span className="text-2xl font-bold dark:text-white">Git Commit AI</span>
+            </Link>
+            <ThemeToggle />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Start your free trial
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-gray-600 dark:text-gray-400">
             14 days free, then {planDetails[formData.plan as keyof typeof planDetails].price}/month
           </p>
         </div>
 
         {/* Plan Selection */}
-        <div className="bg-white p-4 rounded-lg border">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border dark:border-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Selected Plan
           </label>
           <select
             name="plan"
             value={formData.plan}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="individual">Individual - $19/month</option>
             <option value="team">Team - $47/month</option>
@@ -102,7 +106,7 @@ function RegisterForm() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Full name
               </label>
               <input
@@ -112,13 +116,13 @@ function RegisterForm() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Enter your full name"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Email address
               </label>
               <input
@@ -128,13 +132,13 @@ function RegisterForm() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -145,7 +149,7 @@ function RegisterForm() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="appearance-none relative block w-full px-3 py-2 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none relative block w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   placeholder="Create a password"
                 />
                 <button
@@ -154,19 +158,19 @@ function RegisterForm() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="h-4 w-4 text-gray-400" />
+                    <EyeOff className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                   ) : (
-                    <Eye className="h-4 w-4 text-gray-400" />
+                    <Eye className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                   )}
                 </button>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 Must be at least 8 characters long
               </p>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Confirm password
               </label>
               <input
@@ -176,29 +180,29 @@ function RegisterForm() {
                 required
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Confirm your password"
               />
             </div>
           </div>
 
           {/* Trial Benefits */}
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <p className="text-sm font-medium text-blue-900 mb-2">Your 14-day free trial includes:</p>
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+            <p className="text-sm font-medium text-blue-900 dark:text-blue-300 mb-2">Your 14-day free trial includes:</p>
             <div className="space-y-1">
-              <div className="flex items-center gap-2 text-sm text-blue-800">
+              <div className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-300">
                 <CheckCircle2 className="h-4 w-4" />
                 Unlimited AI-generated commits
               </div>
-              <div className="flex items-center gap-2 text-sm text-blue-800">
+              <div className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-300">
                 <CheckCircle2 className="h-4 w-4" />
                 All commit styles and customization
               </div>
-              <div className="flex items-center gap-2 text-sm text-blue-800">
+              <div className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-300">
                 <CheckCircle2 className="h-4 w-4" />
                 VS Code extension & CLI access
               </div>
-              <div className="flex items-center gap-2 text-sm text-blue-800">
+              <div className="flex items-center gap-2 text-sm text-blue-800 dark:text-blue-300">
                 <CheckCircle2 className="h-4 w-4" />
                 No credit card required
               </div>
@@ -217,19 +221,19 @@ function RegisterForm() {
           </div>
 
           <div className="text-center">
-            <p className="text-xs text-gray-500 mb-2">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
               By creating an account, you agree to our{' '}
-              <Link href="/terms" className="text-blue-600 hover:text-blue-500">
+              <Link href="/terms" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
                 Terms of Service
               </Link>{' '}
               and{' '}
-              <Link href="/privacy" className="text-blue-600 hover:text-blue-500">
+              <Link href="/privacy" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
                 Privacy Policy
               </Link>
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
-              <Link href="/auth/login" className="text-blue-600 hover:text-blue-500 font-medium">
+              <Link href="/auth/login" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 font-medium">
                 Sign in
               </Link>
             </p>
@@ -243,10 +247,10 @@ function RegisterForm() {
 export default function RegisterPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
         <div className="text-center">
-          <Code2 className="h-8 w-8 text-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading...</p>
+          <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-4" />
+          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
         </div>
       </div>
     }>

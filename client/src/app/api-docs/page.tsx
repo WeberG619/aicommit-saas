@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Code2, Copy, CheckCircle2, ChevronDown, ChevronRight } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function APIDocsPage() {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
@@ -20,19 +21,20 @@ export default function APIDocsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white dark:bg-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold">Git Commit AI</span>
+              <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+              <span className="text-2xl font-bold dark:text-white">Git Commit AI</span>
             </Link>
             <div className="flex items-center space-x-4">
-              <Link href="/auth/login" className="text-gray-600 hover:text-gray-900">
+              <Link href="/auth/login" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 Sign In
               </Link>
+              <ThemeToggle />
               <Link href="/auth/register">
                 <Button>Get Started</Button>
               </Link>
@@ -43,10 +45,10 @@ export default function APIDocsPage() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             API Documentation
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Integrate Git Commit AI into your workflows with our powerful REST API.
           </p>
         </div>
@@ -54,10 +56,10 @@ export default function APIDocsPage() {
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm p-6 sticky top-6">
-              <h2 className="font-semibold text-gray-900 mb-4">Quick Links</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 sticky top-6">
+              <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h2>
               <nav className="space-y-2">
-                <a href="#authentication" className="block text-sm text-gray-600 hover:text-blue-600">Authentication</a>
+                <a href="#authentication" className="block text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Authentication</a>
                 <a href="#generate-commit" className="block text-sm text-gray-600 hover:text-blue-600">Generate Commit</a>
                 <a href="#history" className="block text-sm text-gray-600 hover:text-blue-600">Commit History</a>
                 <a href="#rate-limits" className="block text-sm text-gray-600 hover:text-blue-600">Rate Limits</a>
@@ -69,8 +71,8 @@ export default function APIDocsPage() {
           {/* Main Content */}
           <div className="lg:col-span-3 space-y-8">
             {/* Base URL */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">Base URL</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+              <h2 className="text-xl font-semibold mb-4 dark:text-white">Base URL</h2>
               <div className="bg-gray-900 rounded-lg p-4 relative">
                 <code className="text-green-400 text-sm">https://api.aicommit.dev/v1</code>
                 <button
@@ -88,7 +90,7 @@ export default function APIDocsPage() {
                 className="flex items-center justify-between cursor-pointer"
                 onClick={() => toggleSection('authentication')}
               >
-                <h2 className="text-xl font-semibold">Authentication</h2>
+                <h2 className="text-xl font-semibold dark:text-white">Authentication</h2>
                 {expandedSection === 'authentication' ? 
                   <ChevronDown className="h-5 w-5 text-gray-400" /> : 
                   <ChevronRight className="h-5 w-5 text-gray-400" />
@@ -97,13 +99,13 @@ export default function APIDocsPage() {
               
               {expandedSection === 'authentication' && (
                 <div className="mt-4 space-y-4">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-400">
                     All API requests require authentication using an API key in the Authorization header.
                   </p>
                   
                   <div>
-                    <h3 className="font-medium mb-2">Getting your API Key</h3>
-                    <ol className="list-decimal list-inside space-y-1 text-gray-600 text-sm">
+                    <h3 className="font-medium mb-2 dark:text-white">Getting your API Key</h3>
+                    <ol className="list-decimal list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm">
                       <li>Log in to your dashboard</li>
                       <li>Navigate to Settings → API Keys</li>
                       <li>Click "Generate New Key"</li>
@@ -112,7 +114,7 @@ export default function APIDocsPage() {
                   </div>
 
                   <div>
-                    <h3 className="font-medium mb-2">Request Headers</h3>
+                    <h3 className="font-medium mb-2 dark:text-white">Request Headers</h3>
                     <div className="bg-gray-900 rounded-lg p-4 relative">
                       <pre className="text-green-400 text-sm">
 {`Authorization: Bearer YOUR_API_KEY
@@ -132,7 +134,7 @@ Content-Type: application/json`}
 
             {/* Generate Commit Message */}
             <div id="generate-commit" className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">Generate Commit Message</h2>
+              <h2 className="text-xl font-semibold mb-4 dark:text-white">Generate Commit Message</h2>
               
               <div className="space-y-4">
                 <div>
@@ -141,7 +143,7 @@ Content-Type: application/json`}
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Request Body</h3>
+                  <h3 className="font-medium mb-2 dark:text-white">Request Body</h3>
                   <div className="bg-gray-900 rounded-lg p-4 relative">
                     <pre className="text-green-400 text-sm">
 {`{
@@ -172,7 +174,7 @@ Content-Type: application/json`}
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Response</h3>
+                  <h3 className="font-medium mb-2 dark:text-white">Response</h3>
                   <div className="bg-gray-900 rounded-lg p-4 relative">
                     <pre className="text-green-400 text-sm">
 {`{
@@ -188,7 +190,7 @@ Content-Type: application/json`}
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Example cURL</h3>
+                  <h3 className="font-medium mb-2 dark:text-white">Example cURL</h3>
                   <div className="bg-gray-900 rounded-lg p-4 relative">
                     <pre className="text-green-400 text-sm">
 {`curl -X POST https://api.aicommit.dev/v1/commits/generate \\
@@ -206,7 +208,7 @@ Content-Type: application/json`}
 
             {/* Commit History */}
             <div id="history" className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">Commit History</h2>
+              <h2 className="text-xl font-semibold mb-4 dark:text-white">Commit History</h2>
               
               <div className="space-y-4">
                 <div>
@@ -215,8 +217,8 @@ Content-Type: application/json`}
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Query Parameters</h3>
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <h3 className="font-medium mb-2 dark:text-white">Query Parameters</h3>
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                     <table className="text-sm">
                       <tbody>
                         <tr>
