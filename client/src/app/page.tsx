@@ -429,7 +429,7 @@ index 1234567..abcdefg 100644
                 <li><Link href="#features" className="hover:text-white transition">Features</Link></li>
                 <li><Link href="#pricing" className="hover:text-white transition">Pricing</Link></li>
                 <li><Link href="/docs" className="hover:text-white transition">Documentation</Link></li>
-                <li><Link href="/api" className="hover:text-white transition">API</Link></li>
+                <li><Link href="/api-docs" className="hover:text-white transition">API</Link></li>
               </ul>
             </div>
             
@@ -437,8 +437,6 @@ index 1234567..abcdefg 100644
               <h4 className="text-white font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-                <li><Link href="/careers" className="hover:text-white transition">Careers</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>

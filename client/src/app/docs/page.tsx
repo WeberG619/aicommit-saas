@@ -326,7 +326,7 @@ gca commit`}
                 <h3 className="font-medium text-gray-900 mb-3">Quick Links</h3>
                 <div className="space-y-2">
                   <Link 
-                    href="/api" 
+                    href="/api-docs" 
                     className="flex items-center space-x-2 text-sm text-gray-600 hover:text-blue-600"
                   >
                     <ExternalLink className="h-3 w-3" />
