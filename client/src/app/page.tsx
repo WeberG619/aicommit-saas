@@ -5,6 +5,7 @@ import { useAuth } from '@/providers/auth-provider';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { EmailCapturePopup, useEmailCapturePopup } from '@/components/email-capture-popup';
+import { InteractiveDemo } from '@/components/interactive-demo';
 import { Code2, Zap, Users, BarChart3, CheckCircle2, ArrowRight, Github, GitBranch, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -122,10 +123,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Interactive Demo Section */}
+      <InteractiveDemo />
+
       {/* Features Section */}
       <section id="features" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 dark:text-white">
             Everything You Need for Perfect Commits
           </h2>
           
@@ -134,11 +138,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
-              <Zap className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">AI-Powered Generation</h3>
-              <p className="text-gray-600">
+              <Zap className="h-12 w-12 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">AI-Powered Generation</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Advanced GPT-4 technology analyzes your code changes and generates meaningful commit messages instantly.
               </p>
             </motion.div>
@@ -147,11 +151,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <GitBranch className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Multiple Commit Styles</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Multiple Commit Styles</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Choose from conventional, semantic, emoji, or custom styles to match your team's standards.
               </p>
             </motion.div>
@@ -160,11 +164,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <Users className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Team Collaboration</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Team Collaboration</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Share commit styles, enforce standards, and maintain consistency across your entire team.
               </p>
             </motion.div>
@@ -173,11 +177,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <BarChart3 className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Analytics & Insights</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Analytics & Insights</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 Track commit patterns, analyze team productivity, and improve your development workflow.
               </p>
             </motion.div>
@@ -186,11 +190,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <Github className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">IDE & CLI Integration</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">IDE & CLI Integration</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 VS Code extension, CLI tool, and API access for seamless integration with your workflow.
               </p>
             </motion.div>
@@ -199,11 +203,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             >
               <Sparkles className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Smart Learning</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Smart Learning</h3>
+              <p className="text-gray-600 dark:text-gray-300">
                 AI learns from your commit history to generate increasingly personalized and accurate messages.
               </p>
             </motion.div>
