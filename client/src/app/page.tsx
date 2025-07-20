@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { useAuth } from '@/providers/auth-provider';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { EmailCapturePopup, useEmailCapturePopup } from '@/components/email-capture-popup';
 import { Code2, Zap, Users, BarChart3, CheckCircle2, ArrowRight, Github, GitBranch, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
   const { user } = useAuth();
+  const { isOpen, closePopup, handleEmailSubmit } = useEmailCapturePopup();
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors">
@@ -26,6 +28,9 @@ export default function Home() {
             </Link>
             <Link href="#pricing" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
               Pricing
+            </Link>
+            <Link href="/blog" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
+              Blog
             </Link>
             <ThemeToggle />
             {user ? (
@@ -590,6 +595,7 @@ index 1234567..abcdefg 100644
               <h4 className="text-white font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/about" className="hover:text-white transition">About</Link></li>
+                <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>
@@ -609,6 +615,13 @@ index 1234567..abcdefg 100644
           </div>
         </div>
       </footer>
+
+      {/* Email Capture Popup */}
+      <EmailCapturePopup 
+        isOpen={isOpen} 
+        onClose={closePopup} 
+        onSubmit={handleEmailSubmit} 
+      />
     </div>
   );
 }
