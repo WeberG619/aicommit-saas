@@ -448,7 +448,7 @@ export default function EnterprisePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <Button size="lg" variant="secondary" className="px-8">
+              <Button size="lg" variant="default" className="px-8">
                 Schedule Demo
               </Button>
             </Link>
