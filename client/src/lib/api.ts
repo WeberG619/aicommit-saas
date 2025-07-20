@@ -61,7 +61,14 @@ export const authAPI = {
 
 // Commits API
 export const commitsAPI = {
-  generate: (data: { diff: string; style: string; customInstructions?: string }) =>
+  generate: (data: { 
+    diff: string; 
+    style: string; 
+    customInstructions?: string;
+    businessContext?: string;
+    ticketNumber?: string;
+    impactArea?: string;
+  }) =>
     api.post('/commits/generate', data),
   
   getHistory: (params?: { limit?: number; offset?: number }) =>
