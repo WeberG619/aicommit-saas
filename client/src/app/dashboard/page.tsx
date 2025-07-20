@@ -45,6 +45,32 @@ interface UsageStats {
   }>;
 }
 
+// Helper functions
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+  toast.success('Copied to clipboard!');
+};
+
+const calculateCommitQuality = (commit: string, context: string, ticket: string): number => {
+  let score = 60; // Base score
+  
+  // Check for conventional commit format
+  if (/^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?:/.test(commit)) score += 20;
+  
+  // Bonus for business context
+  if (context.length > 10) score += 15;
+  
+  // Bonus for ticket reference
+  if (ticket.length > 0) score += 5;
+  
+  // Check commit message length (50-72 chars is ideal for first line)
+  const firstLine = commit.split('\n')[0];
+  if (firstLine.length >= 20 && firstLine.length <= 72) score += 10;
+  else if (firstLine.length > 72) score -= 5;
+  
+  return Math.min(100, Math.max(0, score));
+};
+
 export default function DashboardPage() {
   const { user, loading } = useAuth();
   const router = useRouter();
@@ -122,29 +148,23 @@ export default function DashboardPage() {
     }
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    toast.success('Copied to clipboard!');
-  };
-
-  const calculateCommitQuality = (commit: string, context: string, ticket: string): number => {
-    let score = 60; // Base score
+  const exportToCSV = () => {
+    const csvContent = [
+      'ID,Message,Style,Created At',
+      ...commitHistory.map(commit => 
+        `"${commit.id}","${commit.message.replace(/"/g, '""')}","${commit.style}","${commit.created_at}"`
+      )
+    ].join('\n');
     
-    // Check for conventional commit format
-    if (/^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?:/.test(commit)) score += 20;
-    
-    // Bonus for business context
-    if (context.length > 10) score += 15;
-    
-    // Bonus for ticket reference
-    if (ticket.length > 0) score += 5;
-    
-    // Check commit message length (50-72 chars is ideal for first line)
-    const firstLine = commit.split('\n')[0];
-    if (firstLine.length >= 20 && firstLine.length <= 72) score += 10;
-    else if (firstLine.length > 72) score -= 5;
-    
-    return Math.min(100, Math.max(0, score));
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `git-commit-history-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   if (loading) {
@@ -479,24 +499,7 @@ export default function DashboardPage() {
                   variant="outline" 
                   size="sm" 
                   className="w-full"
-                  onClick={() => {
-                    const csvContent = [
-                      'ID,Message,Style,Created At',
-                      ...commitHistory.map(commit => 
-                        `"${commit.id}","${commit.message.replace(/"/g, '""')}","${commit.style}","${commit.created_at}"`
-                      )
-                    ].join('\n');
-                    
-                    const blob = new Blob([csvContent], { type: 'text/csv' });
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = `git-commit-history-${new Date().toISOString().split('T')[0]}.csv`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    window.URL.revokeObjectURL(url);
-                  }}
+                  onClick={exportToCSV}
                 >
                   <Download className="h-4 w-4 mr-2" />
                   Export History
