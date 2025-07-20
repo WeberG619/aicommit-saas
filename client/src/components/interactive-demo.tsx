@@ -216,7 +216,7 @@ export function InteractiveDemo() {
                         </div>
                         <div className="bg-gray-900 rounded p-3 font-mono text-sm">
                           <pre className="text-green-400">{typedText}</pre>
-                          {typedText.length < demoSteps[2].commitMessage.length && (
+                          {typedText.length < (demoSteps[2].commitMessage?.length || 0) && (
                             <span className="animate-pulse">|</span>
                           )}
                         </div>
