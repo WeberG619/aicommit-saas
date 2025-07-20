@@ -100,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
@@ -138,7 +138,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
             >
               <Zap className="h-12 w-12 text-blue-600 dark:text-blue-400 mb-4" />
               <h3 className="text-xl font-semibold mb-2 dark:text-white">AI-Powered Generation</h3>
@@ -151,7 +151,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
             >
               <GitBranch className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-2 dark:text-white">Multiple Commit Styles</h3>
@@ -164,7 +164,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
             >
               <Users className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-2 dark:text-white">Team Collaboration</h3>
@@ -177,7 +177,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
             >
               <BarChart3 className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-2 dark:text-white">Analytics & Insights</h3>
@@ -190,7 +190,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
             >
               <Github className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-2 dark:text-white">IDE & CLI Integration</h3>
@@ -203,7 +203,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
             >
               <Sparkles className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-2 dark:text-white">Smart Learning</h3>
@@ -216,13 +216,13 @@ export default function Home() {
       </section>
 
       {/* Demo Section */}
-      <section id="demo" className="py-20 bg-gray-50 dark:bg-gray-900 px-4">
+      <section id="demo" className="py-20 bg-gray-50 dark:bg-gray-900 px-4 border-t border-gray-200 dark:border-gray-700">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 dark:text-white">
             See It In Action
           </h2>
           
-          <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-2xl p-8">
+          <div className="max-w-4xl mx-auto bg-gray-900 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 p-8 border border-gray-700 ring-1 ring-gray-600/50">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 bg-red-500 rounded-full"></div>
               <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -283,7 +283,7 @@ index 1234567..abcdefg 100644
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500"
             >
               <h3 className="text-2xl font-bold mb-4 dark:text-white">Individual</h3>
               <div className="mb-6">
@@ -322,7 +322,7 @@ index 1234567..abcdefg 100644
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-blue-600 text-white rounded-lg shadow-lg p-8 hover:shadow-xl transition relative"
+              className="bg-blue-600 text-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border border-blue-500 hover:border-blue-400 relative ring-2 ring-blue-400/20"
             >
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                 Most Popular
@@ -366,7 +366,7 @@ index 1234567..abcdefg 100644
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500"
             >
               <h3 className="text-2xl font-bold mb-4 dark:text-white">Enterprise</h3>
               <div className="mb-6">

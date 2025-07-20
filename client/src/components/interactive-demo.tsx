@@ -116,7 +116,7 @@ export function InteractiveDemo() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section className="py-20 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -163,7 +163,7 @@ export function InteractiveDemo() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm"
+                  className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
                 >
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                     {demoSteps[currentStep].title}
@@ -257,7 +257,7 @@ export function InteractiveDemo() {
 
             {/* Benefits Sidebar */}
             <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+              <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                   Why Developers Love Git Commit AI
                 </h3>
