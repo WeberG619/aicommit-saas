@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useAuth } from '@/providers/auth-provider';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Code2, Zap, Users, BarChart3, CheckCircle2, ArrowRight, Github, GitBranch, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -10,22 +11,23 @@ export default function Home() {
   const { user } = useAuth();
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
+      <nav className="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b dark:border-gray-800">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <Code2 className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold">Git Commit AI</span>
+            <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+            <span className="text-xl font-bold dark:text-white">Git Commit AI</span>
           </Link>
           
           <div className="flex items-center space-x-4">
-            <Link href="#features" className="hidden md:block hover:text-blue-600 transition">
+            <Link href="#features" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
               Features
             </Link>
-            <Link href="#pricing" className="hidden md:block hover:text-blue-600 transition">
+            <Link href="#pricing" className="hidden md:block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
               Pricing
             </Link>
+            <ThemeToggle />
             {user ? (
               <Link href="/dashboard">
                 <Button>Dashboard</Button>
