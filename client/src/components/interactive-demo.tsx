@@ -75,6 +75,8 @@ export function InteractiveDemo() {
     if (currentStep === 2) {
       setShowCommitMessage(true);
       const message = demoSteps[2].commitMessage;
+      if (!message) return;
+      
       let i = 0;
       const typing = setInterval(() => {
         setTypedText(message.slice(0, i));
@@ -104,9 +106,12 @@ export function InteractiveDemo() {
   };
 
   const copyCommitMessage = () => {
-    navigator.clipboard.writeText(demoSteps[2].commitMessage);
-    setCopiedMessage(true);
-    setTimeout(() => setCopiedMessage(false), 2000);
+    const message = demoSteps[2].commitMessage;
+    if (message) {
+      navigator.clipboard.writeText(message);
+      setCopiedMessage(true);
+      setTimeout(() => setCopiedMessage(false), 2000);
+    }
   };
 
   return (
@@ -220,11 +225,11 @@ export function InteractiveDemo() {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
                           <div className="text-sm font-medium text-blue-800 dark:text-blue-200">Type</div>
-                          <div className="text-blue-600 dark:text-blue-400 font-mono">{demoSteps[2].commitType}</div>
+                          <div className="text-blue-600 dark:text-blue-400 font-mono">{demoSteps[2].commitType || 'feat'}</div>
                         </div>
                         <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
                           <div className="text-sm font-medium text-purple-800 dark:text-purple-200">Scope</div>
-                          <div className="text-purple-600 dark:text-purple-400 font-mono">{demoSteps[2].commitScope}</div>
+                          <div className="text-purple-600 dark:text-purple-400 font-mono">{demoSteps[2].commitScope || 'auth'}</div>
                         </div>
                       </div>
                     </div>
