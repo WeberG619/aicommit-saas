@@ -53,7 +53,7 @@ export default function AboutPage() {
                 Every day, millions of developers struggle with writing meaningful commit messages. 
                 Poor commit messages lead to confusion, slower debugging, and reduced team productivity.
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 Git Commit AI solves this by generating professional, contextual commit messages 
                 that clearly describe what changed and why, helping teams maintain better code history.
               </p>

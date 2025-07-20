@@ -63,7 +63,7 @@ export default function Home() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Transform Your Git Commits with AI
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Generate professional, consistent commit messages in seconds. Perfect for developers who value clean commit history.
             </p>
             
@@ -81,7 +81,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600">
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
                 No credit card required
@@ -100,24 +100,24 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-blue-600">50K+</div>
-              <div className="text-gray-600">Commits Generated</div>
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">50K+</div>
+              <div className="text-gray-600 dark:text-gray-300">Commits Generated</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600">1,000+</div>
-              <div className="text-gray-600">Active Users</div>
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">1,000+</div>
+              <div className="text-gray-600 dark:text-gray-300">Active Users</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600">99.9%</div>
-              <div className="text-gray-600">Uptime</div>
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
+              <div className="text-gray-600 dark:text-gray-300">Uptime</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600">4.9/5</div>
-              <div className="text-gray-600">User Rating</div>
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">4.9/5</div>
+              <div className="text-gray-600 dark:text-gray-300">User Rating</div>
             </div>
           </div>
         </div>
@@ -216,9 +216,9 @@ export default function Home() {
       </section>
 
       {/* Demo Section */}
-      <section id="demo" className="py-20 bg-gray-50 px-4">
+      <section id="demo" className="py-20 bg-gray-50 dark:bg-gray-900 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 dark:text-white">
             See It In Action
           </h2>
           

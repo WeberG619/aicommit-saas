@@ -165,7 +165,7 @@ gca commit`}
             <div className="space-y-4">
               <div>
                 <h4 className="font-medium mb-2 dark:text-white">Installation</h4>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
+                <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-300">
                   <li>Open VS Code</li>
                   <li>Go to Extensions (Ctrl+Shift+X)</li>
                   <li>Search for "Git Commit AI"</li>
@@ -179,15 +179,15 @@ gca commit`}
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-3">
                   <div>
                     <strong>Source Control Panel:</strong>
-                    <p className="text-sm text-gray-600">Click the "✨ Generate AI Commit" button in the Source Control panel</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Click the "✨ Generate AI Commit" button in the Source Control panel</p>
                   </div>
                   <div>
                     <strong>Command Palette:</strong>
-                    <p className="text-sm text-gray-600">Press Ctrl+Shift+P and search for "Git Commit AI"</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Press Ctrl+Shift+P and search for "Git Commit AI"</p>
                   </div>
                   <div>
                     <strong>Keyboard Shortcut:</strong>
-                    <p className="text-sm text-gray-600">Use Ctrl+Alt+G (customizable)</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Use Ctrl+Alt+G (customizable)</p>
                   </div>
                 </div>
               </div>
@@ -221,7 +221,7 @@ gca commit`}
             <div className="space-y-6">
               <div>
                 <h4 className="font-medium mb-2 dark:text-white">Global Config</h4>
-                <p className="text-gray-600 mb-3">Create a config file at <code className="bg-gray-200 px-2 py-1 rounded text-sm">~/.gca/config.json</code></p>
+                <p className="text-gray-600 dark:text-gray-300 mb-3">Create a config file at <code className="bg-gray-200 px-2 py-1 rounded text-sm">~/.gca/config.json</code></p>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
 {`{
@@ -240,7 +240,7 @@ gca commit`}
 
               <div>
                 <h4 className="font-medium mb-2 dark:text-white">Project-Specific Config</h4>
-                <p className="text-gray-600 mb-3">Create <code className="bg-gray-200 px-2 py-1 rounded text-sm">.gca.json</code> in your project root</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-3">Create <code className="bg-gray-200 px-2 py-1 rounded text-sm">.gca.json</code> in your project root</p>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
 {`{
@@ -257,15 +257,15 @@ gca commit`}
                 <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                   <div>
                     <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_API_KEY</code>
-                    <p className="text-sm text-gray-600">Your API key (auto-set after login)</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Your API key (auto-set after login)</p>
                   </div>
                   <div>
                     <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_STYLE</code>
-                    <p className="text-sm text-gray-600">Default commit style</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Default commit style</p>
                   </div>
                   <div>
                     <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_MAX_LENGTH</code>
-                    <p className="text-sm text-gray-600">Maximum commit message length</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">Maximum commit message length</p>
                   </div>
                 </div>
               </div>
@@ -329,21 +329,21 @@ gca commit`}
                 <div className="space-y-2">
                   <Link 
                     href="/api-docs" 
-                    className="flex items-center space-x-2 text-sm text-gray-600 hover:text-blue-600"
+                    className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                   >
                     <ExternalLink className="h-3 w-3" />
                     <span>API Reference</span>
                   </Link>
                   <Link 
                     href="https://github.com/gitcommit-ai/examples" 
-                    className="flex items-center space-x-2 text-sm text-gray-600 hover:text-blue-600"
+                    className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                   >
                     <ExternalLink className="h-3 w-3" />
                     <span>Examples</span>
                   </Link>
                   <Link 
                     href="/contact" 
-                    className="flex items-center space-x-2 text-sm text-gray-600 hover:text-blue-600"
+                    className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                   >
                     <ExternalLink className="h-3 w-3" />
                     <span>Support</span>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, RotateCcw, Sparkles, CheckCircle2, Copy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -299,9 +300,11 @@ export function InteractiveDemo() {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Start your free 14-day trial and experience the magic of AI-powered commits.
                 </p>
-                <Button className="w-full">
-                  Start Free Trial
-                </Button>
+                <Link href="/auth/register">
+                  <Button className="w-full">
+                    Start Free Trial
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

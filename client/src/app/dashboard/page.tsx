@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/providers/auth-provider';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -15,7 +16,8 @@ import {
   RefreshCw,
   Download,
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  Home
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import toast from 'react-hot-toast';
@@ -131,6 +133,10 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-4">
+              <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                <Home className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                <span className="text-sm text-gray-600 dark:text-gray-400">Back to Main</span>
+              </Link>
               <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Git Commit AI</h1>
@@ -354,7 +360,29 @@ export default function DashboardPage() {
 
             {commitHistory.length > 0 && (
               <div className="p-4 border-t dark:border-gray-700">
-                <Button variant="outline" size="sm" className="w-full">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => {
+                    const csvContent = [
+                      'Date,Repository,Message,Type',
+                      ...commitHistory.map(commit => 
+                        `"${commit.date}","${commit.repository}","${commit.message}","${commit.type}"`
+                      )
+                    ].join('\n');
+                    
+                    const blob = new Blob([csvContent], { type: 'text/csv' });
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `git-commit-history-${new Date().toISOString().split('T')[0]}.csv`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                  }}
+                >
                   <Download className="h-4 w-4 mr-2" />
                   Export History
                 </Button>

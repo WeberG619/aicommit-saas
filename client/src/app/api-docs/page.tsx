@@ -60,10 +60,10 @@ export default function APIDocsPage() {
               <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h2>
               <nav className="space-y-2">
                 <a href="#authentication" className="block text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Authentication</a>
-                <a href="#generate-commit" className="block text-sm text-gray-600 hover:text-blue-600">Generate Commit</a>
-                <a href="#history" className="block text-sm text-gray-600 hover:text-blue-600">Commit History</a>
-                <a href="#rate-limits" className="block text-sm text-gray-600 hover:text-blue-600">Rate Limits</a>
-                <a href="#errors" className="block text-sm text-gray-600 hover:text-blue-600">Error Handling</a>
+                <a href="#generate-commit" className="block text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Generate Commit</a>
+                <a href="#history" className="block text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Commit History</a>
+                <a href="#rate-limits" className="block text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Rate Limits</a>
+                <a href="#errors" className="block text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Error Handling</a>
               </nav>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function APIDocsPage() {
             </div>
 
             {/* Authentication */}
-            <div id="authentication" className="bg-white rounded-lg shadow-sm p-6">
+            <div id="authentication" className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
               <div 
                 className="flex items-center justify-between cursor-pointer"
                 onClick={() => toggleSection('authentication')}
@@ -133,13 +133,13 @@ Content-Type: application/json`}
             </div>
 
             {/* Generate Commit Message */}
-            <div id="generate-commit" className="bg-white rounded-lg shadow-sm p-6">
+            <div id="generate-commit" className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
               <h2 className="text-xl font-semibold mb-4 dark:text-white">Generate Commit Message</h2>
               
               <div className="space-y-4">
                 <div>
                   <span className="inline-block bg-green-100 text-green-800 text-sm px-2 py-1 rounded font-medium">POST</span>
-                  <code className="ml-2 text-gray-700">/commits/generate</code>
+                  <code className="ml-2 text-gray-700 dark:text-gray-300">/commits/generate</code>
                 </div>
 
                 <div>
@@ -207,13 +207,13 @@ Content-Type: application/json`}
             </div>
 
             {/* Commit History */}
-            <div id="history" className="bg-white rounded-lg shadow-sm p-6">
+            <div id="history" className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
               <h2 className="text-xl font-semibold mb-4 dark:text-white">Commit History</h2>
               
               <div className="space-y-4">
                 <div>
                   <span className="inline-block bg-blue-100 text-blue-800 text-sm px-2 py-1 rounded font-medium">GET</span>
-                  <code className="ml-2 text-gray-700">/commits/history</code>
+                  <code className="ml-2 text-gray-700 dark:text-gray-300">/commits/history</code>
                 </div>
 
                 <div>
@@ -223,7 +223,7 @@ Content-Type: application/json`}
                       <tbody>
                         <tr>
                           <td className="font-medium pr-4">limit</td>
-                          <td className="text-gray-600">Number of results (default: 50, max: 100)</td>
+                          <td className="text-gray-600 dark:text-gray-300">Number of results (default: 50, max: 100)</td>
                         </tr>
                         <tr>
                           <td className="font-medium pr-4 pt-2">offset</td>
@@ -245,15 +245,15 @@ Content-Type: application/json`}
             </div>
 
             {/* Rate Limits */}
-            <div id="rate-limits" className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">Rate Limits</h2>
+            <div id="rate-limits" className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Rate Limits</h2>
               
               <div className="space-y-4">
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   API requests are rate limited based on your subscription plan:
                 </p>
                 
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b">
@@ -283,7 +283,7 @@ Content-Type: application/json`}
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Rate Limit Headers</h3>
+                  <h3 className="font-medium text-gray-900 dark:text-white mb-2">Rate Limit Headers</h3>
                   <div className="bg-gray-900 rounded-lg p-4">
                     <pre className="text-green-400 text-sm">
 {`X-RateLimit-Limit: 100
@@ -296,16 +296,16 @@ X-RateLimit-Reset: 1642550400`}
             </div>
 
             {/* Error Handling */}
-            <div id="errors" className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold mb-4">Error Handling</h2>
+            <div id="errors" className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Error Handling</h2>
               
               <div className="space-y-4">
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   The API uses standard HTTP status codes and returns detailed error messages.
                 </p>
                 
                 <div>
-                  <h3 className="font-medium mb-2">Error Response Format</h3>
+                  <h3 className="font-medium text-gray-900 dark:text-white mb-2">Error Response Format</h3>
                   <div className="bg-gray-900 rounded-lg p-4">
                     <pre className="text-green-400 text-sm">
 {`{
@@ -320,7 +320,7 @@ X-RateLimit-Reset: 1642550400`}
                 </div>
 
                 <div>
-                  <h3 className="font-medium mb-2">Common Error Codes</h3>
+                  <h3 className="font-medium text-gray-900 dark:text-white mb-2">Common Error Codes</h3>
                   <div className="bg-gray-50 rounded-lg p-4 space-y-2 text-sm">
                     <div><code className="font-mono bg-gray-200 px-1">400</code> - Bad Request</div>
                     <div><code className="font-mono bg-gray-200 px-1">401</code> - Unauthorized</div>
