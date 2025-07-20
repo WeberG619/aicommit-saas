@@ -87,25 +87,6 @@ export default function DashboardPage() {
     return Math.min(100, Math.max(0, score));
   };
 
-  const exportToCSV = () => {
-    const csvContent = [
-      'ID,Message,Style,Created At',
-      ...commitHistory.map(commit => 
-        `"${commit.id}","${commit.message.replace(/"/g, '""')}","${commit.style}","${commit.created_at}"`
-      )
-    ].join('\n');
-    
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `git-commit-history-${new Date().toISOString().split('T')[0]}.csv`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
-  };
-
   useEffect(() => {
     if (!loading && !user) {
       router.push('/auth/login');
@@ -165,6 +146,25 @@ export default function DashboardPage() {
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const exportToCSV = () => {
+    const csvContent = [
+      'ID,Message,Style,Created At',
+      ...commitHistory.map(commit => 
+        `"${commit.id}","${commit.message.replace(/"/g, '""')}","${commit.style}","${commit.created_at}"`
+      )
+    ].join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `git-commit-history-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   if (loading) {
@@ -237,7 +237,7 @@ export default function DashboardPage() {
           <AnalyticsDashboard />
         ) : (
           <>
-        {/* Stats Cards */}
+        {/* Stats Cards */>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
@@ -254,26 +254,26 @@ export default function DashboardPage() {
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
-              <BarChart3 className="h-8 w-8 text-green-600" />
+              <Sparkles className="h-8 w-8 text-purple-600 dark:text-purple-400" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Daily Average</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Tokens Used</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {Math.round((usageStats?.current.commits_generated || 0) / new Date().getDate())}
+                  {usageStats?.current.tokens_used || 0}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">commits</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">AI processing</p>
               </div>
             </div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="flex items-center">
-              <Clock className="h-8 w-8 text-purple-600" />
+              <BarChart3 className="h-8 w-8 text-green-600 dark:text-green-400" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Time Saved</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Avg per Day</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {Math.round((usageStats?.current.commits_generated || 0) * 2.5)}
+                  {Math.round((usageStats?.current.commits_generated || 0) / new Date().getDate())}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">minutes</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">commits</p>
               </div>
             </div>
           </div>
@@ -432,24 +432,80 @@ export default function DashboardPage() {
                       <Copy className="h-4 w-4" />
                     </Button>
                   </div>
-                  <pre className="text-sm bg-gray-900 text-green-400 p-3 rounded font-mono whitespace-pre-wrap">
+                  <p className="font-mono text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded border dark:border-gray-600">
                     {generatedCommit}
-                  </pre>
+                  </p>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Export CSV Button for Generate Tab */}
-          <div className="flex justify-end mb-6">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={exportToCSV}
-            >
-              <Download className="h-4 w-4 mr-2" />
-              Export CSV
-            </Button>
+          {/* Recent History */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
+            <div className="p-6 border-b dark:border-gray-700">
+              <div className="flex justify-between items-center">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Commits</h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={loadCommitHistory}
+                >
+                  <RefreshCw className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+            
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
+              {commitHistory.length > 0 ? (
+                commitHistory.map((commit) => (
+                  <div key={commit.id} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-mono text-sm text-gray-900 dark:text-white break-words">
+                          {commit.message}
+                        </p>
+                        <div className="flex items-center mt-2 space-x-4">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300">
+                            {commit.style}
+                          </span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">
+                            {formatDate(commit.created_at)}
+                          </span>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => copyToClipboard(commit.message)}
+                        className="ml-2 flex-shrink-0"
+                      >
+                        <Copy className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="p-8 text-center">
+                  <GitCommit className="h-12 w-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                  <p className="text-gray-500 dark:text-gray-400">No commits generated yet</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-500">Start by generating your first commit message!</p>
+                </div>
+              )}
+            </div>
+
+            {commitHistory.length > 0 && (
+              <div className="p-4 border-t dark:border-gray-700">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={exportToCSV}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Export History
+                </Button>
+              </div>
+            )}
           </div>
         </div>
           </>
