@@ -228,20 +228,20 @@ Content-Type: application/json`}
                     <table className="text-sm">
                       <tbody>
                         <tr>
-                          <td className="font-medium pr-4">limit</td>
+                          <td className="font-medium pr-4 text-gray-900 dark:text-white">limit</td>
                           <td className="text-gray-600 dark:text-gray-300">Number of results (default: 50, max: 100)</td>
                         </tr>
                         <tr>
-                          <td className="font-medium pr-4 pt-2">offset</td>
-                          <td className="text-gray-600 pt-2">Pagination offset</td>
+                          <td className="font-medium pr-4 pt-2 text-gray-900 dark:text-white">offset</td>
+                          <td className="text-gray-600 dark:text-gray-300 pt-2">Pagination offset</td>
                         </tr>
                         <tr>
-                          <td className="font-medium pr-4 pt-2">from</td>
-                          <td className="text-gray-600 pt-2">Start date (ISO 8601)</td>
+                          <td className="font-medium pr-4 pt-2 text-gray-900 dark:text-white">from</td>
+                          <td className="text-gray-600 dark:text-gray-300 pt-2">Start date (ISO 8601)</td>
                         </tr>
                         <tr>
-                          <td className="font-medium pr-4 pt-2">to</td>
-                          <td className="text-gray-600 pt-2">End date (ISO 8601)</td>
+                          <td className="font-medium pr-4 pt-2 text-gray-900 dark:text-white">to</td>
+                          <td className="text-gray-600 dark:text-gray-300 pt-2">End date (ISO 8601)</td>
                         </tr>
                       </tbody>
                     </table>
@@ -262,27 +262,27 @@ Content-Type: application/json`}
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b">
-                        <th className="text-left pb-2">Plan</th>
-                        <th className="text-left pb-2">Requests/Hour</th>
-                        <th className="text-left pb-2">Requests/Day</th>
+                      <tr className="border-b border-gray-200 dark:border-gray-600">
+                        <th className="text-left pb-2 text-gray-900 dark:text-white">Plan</th>
+                        <th className="text-left pb-2 text-gray-900 dark:text-white">Requests/Hour</th>
+                        <th className="text-left pb-2 text-gray-900 dark:text-white">Requests/Day</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-b">
-                        <td className="py-2">Individual</td>
-                        <td>100</td>
-                        <td>1,000</td>
+                      <tr className="border-b border-gray-200 dark:border-gray-600">
+                        <td className="py-2 text-gray-900 dark:text-white">Individual</td>
+                        <td className="text-gray-900 dark:text-white">100</td>
+                        <td className="text-gray-900 dark:text-white">1,000</td>
                       </tr>
-                      <tr className="border-b">
-                        <td className="py-2">Team</td>
-                        <td>500</td>
-                        <td>5,000</td>
+                      <tr className="border-b border-gray-200 dark:border-gray-600">
+                        <td className="py-2 text-gray-900 dark:text-white">Team</td>
+                        <td className="text-gray-900 dark:text-white">500</td>
+                        <td className="text-gray-900 dark:text-white">5,000</td>
                       </tr>
                       <tr>
-                        <td className="py-2">Enterprise</td>
-                        <td>Unlimited</td>
-                        <td>Unlimited</td>
+                        <td className="py-2 text-gray-900 dark:text-white">Enterprise</td>
+                        <td className="text-gray-900 dark:text-white">Unlimited</td>
+                        <td className="text-gray-900 dark:text-white">Unlimited</td>
                       </tr>
                     </tbody>
                   </table>
@@ -327,13 +327,13 @@ X-RateLimit-Reset: 1642550400`}
 
                 <div>
                   <h3 className="font-medium text-gray-900 dark:text-white mb-2">Common Error Codes</h3>
-                  <div className="bg-gray-50 rounded-lg p-4 space-y-2 text-sm">
-                    <div><code className="font-mono bg-gray-200 px-1">400</code> - Bad Request</div>
-                    <div><code className="font-mono bg-gray-200 px-1">401</code> - Unauthorized</div>
-                    <div><code className="font-mono bg-gray-200 px-1">403</code> - Forbidden</div>
-                    <div><code className="font-mono bg-gray-200 px-1">404</code> - Not Found</div>
-                    <div><code className="font-mono bg-gray-200 px-1">429</code> - Rate Limit Exceeded</div>
-                    <div><code className="font-mono bg-gray-200 px-1">500</code> - Internal Server Error</div>
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-2 text-sm">
+                    <div className="text-gray-900 dark:text-gray-200"><code className="font-mono bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-1">400</code> - Bad Request</div>
+                    <div className="text-gray-900 dark:text-gray-200"><code className="font-mono bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-1">401</code> - Unauthorized</div>
+                    <div className="text-gray-900 dark:text-gray-200"><code className="font-mono bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-1">403</code> - Forbidden</div>
+                    <div className="text-gray-900 dark:text-gray-200"><code className="font-mono bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-1">404</code> - Not Found</div>
+                    <div className="text-gray-900 dark:text-gray-200"><code className="font-mono bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-1">429</code> - Rate Limit Exceeded</div>
+                    <div className="text-gray-900 dark:text-gray-200"><code className="font-mono bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-1">500</code> - Internal Server Error</div>
                   </div>
                 </div>
               </div>

@@ -222,7 +222,7 @@ gca commit`}
             <div className="space-y-6">
               <div>
                 <h4 className="font-medium mb-2 dark:text-white">Global Config</h4>
-                <p className="text-gray-600 dark:text-gray-300 mb-3">Create a config file at <code className="bg-gray-200 px-2 py-1 rounded text-sm">~/.gca/config.json</code></p>
+                <p className="text-gray-600 dark:text-gray-300 mb-3">Create a config file at <code className="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-2 py-1 rounded text-sm">~/.gca/config.json</code></p>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
 {`{
@@ -241,7 +241,7 @@ gca commit`}
 
               <div>
                 <h4 className="font-medium mb-2 dark:text-white">Project-Specific Config</h4>
-                <p className="text-gray-600 dark:text-gray-300 mb-3">Create <code className="bg-gray-200 px-2 py-1 rounded text-sm">.gca.json</code> in your project root</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-3">Create <code className="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 px-2 py-1 rounded text-sm">.gca.json</code> in your project root</p>
                 <div className="bg-gray-900 rounded-lg p-4">
                   <pre className="text-green-400 text-sm">
 {`{
@@ -255,7 +255,7 @@ gca commit`}
 
               <div>
                 <h4 className="font-medium mb-2 dark:text-white">Environment Variables</h4>
-                <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 space-y-2">
                   <div>
                     <code className="bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded text-sm">GCA_API_KEY</code>
                     <p className="text-sm text-gray-600 dark:text-gray-300">Your API key (auto-set after login)</p>
