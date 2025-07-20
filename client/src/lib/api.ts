@@ -1,7 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.example.com';
 
 // Create axios instance
 export const api = axios.create({
@@ -29,6 +29,12 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Don't show errors or redirect when API is completely unavailable (e.g., missing env vars)
+    if (error.code === 'ERR_NETWORK' || !error.response) {
+      console.warn('API unavailable:', error.message);
+      return Promise.reject(error);
+    }
+    
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
       window.location.href = '/auth/login';

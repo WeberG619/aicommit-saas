@@ -33,10 +33,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      refreshUser();
-    } else {
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        refreshUser().catch(() => {
+          // Gracefully handle API errors during initialization
+          setLoading(false);
+        });
+      } else {
+        setLoading(false);
+      }
+    } catch (error) {
+      console.warn('Auth initialization failed:', error);
       setLoading(false);
     }
   }, []);
