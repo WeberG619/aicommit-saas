@@ -366,9 +366,9 @@ export default function DashboardPage() {
                   className="w-full"
                   onClick={() => {
                     const csvContent = [
-                      'Date,Repository,Message,Type',
+                      'ID,Message,Style,Created At',
                       ...commitHistory.map(commit => 
-                        `"${commit.date}","${commit.repository}","${commit.message}","${commit.type}"`
+                        `"${commit.id}","${commit.message.replace(/"/g, '""')}","${commit.style}","${commit.created_at}"`
                       )
                     ].join('\n');
                     
