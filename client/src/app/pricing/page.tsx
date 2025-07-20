@@ -441,7 +441,7 @@ export default function PricingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth/register">
-              <Button size="lg" variant="secondary" className="px-8">
+              <Button size="lg" variant="default" className="px-8">
                 Start Free Trial
               </Button>
             </Link>
