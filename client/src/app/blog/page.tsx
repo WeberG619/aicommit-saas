@@ -84,6 +84,7 @@ const categories = ['All', 'AI', 'Best Practices', 'Research', 'Tips', 'Product'
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   
   // Filter blog posts based on selected category
   const filteredPosts = selectedCategory === 'All' 
@@ -184,10 +185,7 @@ export default function BlogPage() {
               </div>
               
               <Button 
-                onClick={() => {
-                  // For now, show an alert since we don't have individual blog pages
-                  alert(`This would open the full article: "${blogPosts[0].title}"\n\nIn a real application, this would navigate to /blog/${blogPosts[0].slug}`);
-                }}
+                onClick={() => setSelectedPost(blogPosts[0])}
                 className="flex items-center gap-2"
               >
                 Read More
@@ -227,10 +225,7 @@ export default function BlogPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
                   <button
-                    onClick={() => {
-                      // For now, show an alert since we don't have individual blog pages
-                      alert(`This would open the full article: "${post.title}"\n\nIn a real application, this would navigate to /blog/${post.slug}`);
-                    }}
+                    onClick={() => setSelectedPost(post)}
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium transition-colors"
                   >
                     Read More →
@@ -277,6 +272,89 @@ export default function BlogPage() {
           </p>
         </div>
       </div>
+
+      {/* Blog Post Modal */}
+      {selectedPost && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedPost(null)}>
+          <div 
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-8">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded">
+                    {selectedPost.category}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setSelectedPost(null)}
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                >
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Title */}
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {selectedPost.title}
+              </h1>
+
+              {/* Meta Info */}
+              <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center">
+                  <User className="h-4 w-4 mr-1" />
+                  {selectedPost.author}
+                </div>
+                <div className="flex items-center">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  {new Date(selectedPost.date).toLocaleDateString()}
+                </div>
+                <div className="flex items-center">
+                  <Clock className="h-4 w-4 mr-1" />
+                  {selectedPost.readTime}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="prose prose-lg max-w-none dark:prose-invert">
+                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8">
+                  {selectedPost.excerpt}
+                </p>
+                
+                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mb-8">
+                  <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                    📝 Full Article Coming Soon
+                  </h3>
+                  <p className="text-blue-800 dark:text-blue-300">
+                    This is a preview of the blog post <strong>"{selectedPost.title}"</strong>. 
+                    In a full implementation, this modal would display the complete article content, 
+                    including sections, code examples, images, and more detailed information.
+                  </p>
+                  <p className="text-blue-700 dark:text-blue-400 mt-3 text-sm">
+                    <strong>Article URL:</strong> /blog/{selectedPost.slug}
+                  </p>
+                </div>
+
+                <div className="flex justify-between items-center pt-6 border-t border-gray-200 dark:border-gray-700">
+                  <button
+                    onClick={() => setSelectedPost(null)}
+                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
+                    ← Back to Blog
+                  </button>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    Article preview • Full content coming soon
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
