@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Code2, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import toast from 'react-hot-toast';
+import { PRICING_PLANS } from '@/lib/pricing';
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -62,9 +63,9 @@ function RegisterForm() {
   };
 
   const planDetails = {
-    individual: { name: 'Individual', price: '$19', color: 'text-blue-600' },
-    team: { name: 'Team', price: '$47', color: 'text-purple-600' },
-    enterprise: { name: 'Enterprise', price: '$97', color: 'text-green-600' },
+    individual: { name: PRICING_PLANS.individual.name, price: PRICING_PLANS.individual.price, color: 'text-blue-600' },
+    team: { name: PRICING_PLANS.team.name, price: PRICING_PLANS.team.price, color: 'text-purple-600' },
+    enterprise: { name: PRICING_PLANS.enterprise.name, price: PRICING_PLANS.enterprise.price, color: 'text-green-600' },
   };
 
   return (
@@ -97,9 +98,9 @@ function RegisterForm() {
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           >
-            <option value="individual">Individual - $19/month</option>
-            <option value="team">Team - $47/month</option>
-            <option value="enterprise">Enterprise - $97/month</option>
+            <option value="individual">{PRICING_PLANS.individual.name} - {PRICING_PLANS.individual.price}{PRICING_PLANS.individual.period}</option>
+            <option value="team">{PRICING_PLANS.team.name} - {PRICING_PLANS.team.price}{PRICING_PLANS.team.period}</option>
+            <option value="enterprise">{PRICING_PLANS.enterprise.name} - {PRICING_PLANS.enterprise.price}{PRICING_PLANS.enterprise.period}</option>
           </select>
         </div>
 

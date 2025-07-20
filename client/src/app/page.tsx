@@ -8,6 +8,7 @@ import { EmailCapturePopup, useEmailCapturePopup } from '@/components/email-capt
 import { InteractiveDemo } from '@/components/interactive-demo';
 import { Code2, Zap, Users, BarChart3, CheckCircle2, ArrowRight, Github, GitBranch, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { PRICING_PLANS } from '@/lib/pricing';
 
 export default function Home() {
   const { user } = useAuth();
@@ -288,10 +289,10 @@ index 1234567..abcdefg 100644
               transition={{ duration: 0.5 }}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500"
             >
-              <h3 className="text-2xl font-bold mb-4 dark:text-white">Individual</h3>
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">{PRICING_PLANS.individual.name}</h3>
               <div className="mb-6">
-                <span className="text-4xl font-bold dark:text-white">$19</span>
-                <span className="text-gray-600 dark:text-gray-400">/month</span>
+                <span className="text-4xl font-bold dark:text-white">{PRICING_PLANS.individual.price}</span>
+                <span className="text-gray-600 dark:text-gray-400">{PRICING_PLANS.individual.period}</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
@@ -330,10 +331,10 @@ index 1234567..abcdefg 100644
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                 Most Popular
               </div>
-              <h3 className="text-2xl font-bold mb-4 dark:text-white">Team</h3>
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">{PRICING_PLANS.team.name}</h3>
               <div className="mb-6">
-                <span className="text-4xl font-bold dark:text-white">$47</span>
-                <span className="text-blue-100">/month</span>
+                <span className="text-4xl font-bold dark:text-white">{PRICING_PLANS.team.price}</span>
+                <span className="text-blue-100">{PRICING_PLANS.team.period}</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
@@ -371,10 +372,10 @@ index 1234567..abcdefg 100644
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500"
             >
-              <h3 className="text-2xl font-bold mb-4 dark:text-white">Enterprise</h3>
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">{PRICING_PLANS.enterprise.name}</h3>
               <div className="mb-6">
-                <span className="text-4xl font-bold dark:text-white">$97</span>
-                <span className="text-gray-600 dark:text-gray-400">/month</span>
+                <span className="text-4xl font-bold dark:text-white">{PRICING_PLANS.enterprise.price}</span>
+                <span className="text-gray-600 dark:text-gray-400">{PRICING_PLANS.enterprise.period}</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
