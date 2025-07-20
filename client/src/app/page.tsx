@@ -270,10 +270,10 @@ index 1234567..abcdefg 100644
       {/* Pricing Section */}
       <section id="pricing" className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 dark:text-white">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
+          <p className="text-xl text-gray-600 dark:text-gray-300 text-center mb-12">
             Choose the plan that fits your needs. All plans include a 14-day free trial.
           </p>
           
@@ -283,12 +283,12 @@ index 1234567..abcdefg 100644
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 hover:shadow-xl transition"
             >
-              <h3 className="text-2xl font-bold mb-4">Individual</h3>
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">Individual</h3>
               <div className="mb-6">
-                <span className="text-4xl font-bold">$19</span>
-                <span className="text-gray-600">/month</span>
+                <span className="text-4xl font-bold dark:text-white">$19</span>
+                <span className="text-gray-600 dark:text-gray-400">/month</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
@@ -327,9 +327,9 @@ index 1234567..abcdefg 100644
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                 Most Popular
               </div>
-              <h3 className="text-2xl font-bold mb-4">Team</h3>
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">Team</h3>
               <div className="mb-6">
-                <span className="text-4xl font-bold">$47</span>
+                <span className="text-4xl font-bold dark:text-white">$47</span>
                 <span className="text-blue-100">/month</span>
               </div>
               <ul className="space-y-3 mb-8">
@@ -366,12 +366,12 @@ index 1234567..abcdefg 100644
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 hover:shadow-xl transition"
             >
-              <h3 className="text-2xl font-bold mb-4">Enterprise</h3>
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">Enterprise</h3>
               <div className="mb-6">
-                <span className="text-4xl font-bold">$97</span>
-                <span className="text-gray-600">/month</span>
+                <span className="text-4xl font-bold dark:text-white">$97</span>
+                <span className="text-gray-600 dark:text-gray-400">/month</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
