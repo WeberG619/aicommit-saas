@@ -19,13 +19,9 @@ export function SafeAuthProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
-  // Don't render children until client-side mounted to prevent hydration errors
-  if (!mounted) {
-    return null;
-  }
-
+  // Always render children, just with safe auth context
   return (
-    <SafeAuthContext.Provider value={{ user: null, loading: false }}>
+    <SafeAuthContext.Provider value={{ user: null, loading: !mounted }}>
       {children}
     </SafeAuthContext.Provider>
   );
