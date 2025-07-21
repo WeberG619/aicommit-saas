@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/providers/auth-provider';
 import { Button } from '@/components/ui/button';
@@ -10,7 +11,7 @@ import { Code2, Zap, Users, BarChart3, CheckCircle2, ArrowRight, Github, GitBran
 import { motion } from 'framer-motion';
 import { PRICING_PLANS } from '@/lib/pricing';
 
-export default function Home() {
+function HomePage() {
   const { user } = useAuth();
   const { isOpen, closePopup, handleEmailSubmit } = useEmailCapturePopup();
 
@@ -632,4 +633,43 @@ index 1234567..abcdefg 100644
       />
     </div>
   );
+}
+
+export default function Home() {
+  return (
+    <ErrorBoundary>
+      <HomePage />
+    </ErrorBoundary>
+  );
+}
+
+class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean}> {
+  constructor(props: {children: React.ReactNode}) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Page error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">Please check your browser console for errors.</p>
+            <a href="/" className="text-blue-600 hover:underline">Reload page</a>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
 }
