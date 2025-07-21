@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Code2, CheckCircle2, ArrowRight } from 'lucide-react';
 
-export default function HomePage() {
+export default function WorkingHomePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Navigation */}
